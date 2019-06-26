@@ -4,8 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "bezoek")
@@ -17,20 +16,31 @@ public class Bezoek {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Patient> patients;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Patient patient;
 
     @Column(name = "bevinding", nullable = false)
     private String bevinding;
 
     @Column(name = "bezoek_datum", nullable = false)
-    private Timestamp timestamp;
+    private LocalDateTime timestamp;
 
-    public Bezoek(List<Patient> patients, String bevinding) {
-        this.patients = patients;
+    public Bezoek(Patient patient, String bevinding) {
+        this.patient = patient;
         this.bevinding = bevinding;
+        setTimestamp(LocalDateTime.now());
     }
 
     public Bezoek() {
+    }
+
+    @Override
+    public String toString() {
+        return "Bezoek{" +
+                "id=" + id +
+                ", patient=" + patient +
+                ", bevinding='" + bevinding + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
     }
 }

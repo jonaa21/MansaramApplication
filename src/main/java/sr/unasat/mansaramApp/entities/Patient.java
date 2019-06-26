@@ -1,14 +1,10 @@
 package sr.unasat.mansaramApp.entities;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
-import sr.unasat.mansaramApp.utils.DateDeserializer;
-import sr.unasat.mansaramApp.utils.DateSerializer;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "patient")
@@ -36,9 +32,9 @@ public class Patient {
     private String geslacht;
 
     @Column(name = "geb_datum", nullable = false)
-    @JsonSerialize(using = DateSerializer.class)
-    @JsonDeserialize(using = DateDeserializer.class)
-    private Date gebDatum;
+//    @JsonSerialize(using = DateSerializer.class)
+//    @JsonDeserialize(using = DateDeserializer.class)
+    private LocalDate gebDatum;
 
     @OneToOne
     @JoinColumn(name = "verzekering_id")
@@ -47,7 +43,7 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String voornaam, String achternaam, String adres, Verzekering verzekering, String verzekeringNummer, String geslacht, Date gebDatum) {
+    public Patient(String voornaam, String achternaam, String adres, Verzekering verzekering, String verzekeringNummer, String geslacht, LocalDate gebDatum) {
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.adres = adres;

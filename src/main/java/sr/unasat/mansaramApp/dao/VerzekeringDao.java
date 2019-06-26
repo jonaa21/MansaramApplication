@@ -45,7 +45,7 @@ public class VerzekeringDao {
         return verzekering;
     }
 
-    public List<Verzekering> getVerzekeringByVerzekeraar(Verzekeraar verzekeraar){
+    public List<Verzekering> getVerzekeringenByVerzekeraar(Verzekeraar verzekeraar) {
         entityManager.getTransaction().begin();
         String jpql = "select v from Verzekering v where v.verzekeraar = :verzekeraar";
         TypedQuery<Verzekering> query = entityManager.createQuery(jpql, Verzekering.class);

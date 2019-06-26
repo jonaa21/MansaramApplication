@@ -1,6 +1,5 @@
 package sr.unasat.mansaramApp.dao;
 
-import sr.unasat.mansaramApp.config.JPAConfiguration;
 import sr.unasat.mansaramApp.entities.Patient;
 
 import javax.persistence.EntityExistsException;
@@ -36,5 +35,15 @@ public class PatientDao {
         List<Patient> patients = query.getResultList();
         entityManager.getTransaction().commit();
         return patients;
+    }
+
+    public Patient getPatientById(Long id) {
+        entityManager.getTransaction().begin();
+        String jpql = "select p from Patient p where p.id = :id";
+        TypedQuery<Patient> query = entityManager.createQuery(jpql, Patient.class);
+        query.setParameter("id", id);
+        Patient patient = query.getSingleResult();
+        entityManager.getTransaction().commit();
+        return patient;
     }
 }

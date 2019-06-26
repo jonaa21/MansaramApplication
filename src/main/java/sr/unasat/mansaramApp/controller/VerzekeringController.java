@@ -1,7 +1,9 @@
 package sr.unasat.mansaramApp.controller;
 
 import org.modelmapper.ModelMapper;
+import sr.unasat.mansaramApp.dto.VerzekeraarDto;
 import sr.unasat.mansaramApp.dto.VerzekeringDto;
+import sr.unasat.mansaramApp.entities.Verzekeraar;
 import sr.unasat.mansaramApp.entities.Verzekering;
 import sr.unasat.mansaramApp.service.VerzekeringService;
 
@@ -30,5 +32,13 @@ public class VerzekeringController {
         verzekeringList.forEach(v ->
                 verzekeraarDtoList.add(modelMapper.map(v, VerzekeringDto.class)));
         return Response.ok(verzekeraarDtoList).build();
+    }
+
+    @Path("/getVerzekeraar")
+    @GET
+    public Response getVerzekeringenByVerzekeraar(VerzekeraarDto verzekeraar) {
+        Verzekeraar verz = modelMapper.map(verzekeraar, Verzekeraar.class);
+        List<Verzekering> verzekeringen = verzService.getVerzekeringenByVerzekeraar(verz);
+        return Response.ok(verzekeringen).build();
     }
 }

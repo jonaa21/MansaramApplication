@@ -1,15 +1,12 @@
 package sr.unasat.mansaramApp.dto;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
 import sr.unasat.mansaramApp.entities.Verzekering;
-import sr.unasat.mansaramApp.utils.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -37,14 +34,14 @@ public class PatientDto {
     private String geslacht;
 
     @NotNull
-    @JsonSerialize(using = DateSerializer.class)
-    @JsonDeserialize(using = DateDeserializer.class)
-    private Date gebDatum;
+//    @JsonSerialize(using = DateSerializer.class)
+//    @JsonDeserialize(using = DateDeserializer.class)
+    private LocalDate gebDatum;
 
     public PatientDto() {
     }
 
-    public PatientDto(Long id, String voornaam, String achternaam, String adres, Verzekering verzekering, String verzekeringNummer, String geslacht, Date gebDatum) {
+    public PatientDto(Long id, String voornaam, String achternaam, String adres, Verzekering verzekering, String verzekeringNummer, String geslacht, LocalDate gebDatum) {
         this.id = id;
         this.voornaam = voornaam;
         this.achternaam = achternaam;

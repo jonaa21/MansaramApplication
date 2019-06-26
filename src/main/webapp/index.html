@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MusiQ Library</title>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet">
+</head>
+
+<body background="images/music-bg.jpg" class="img-fluid" style="background-size: 100%">
+<div class="container-fluid" id="container">
+
+    <div class="row">
+        <!--Menu-->
+        <div class="col-2">
+            <div class="nav-column" id="nav-column" style="font-size: 20px;">
+                <div id="mainMenu">
+                    <a class="text-dark" href="index.html">
+                        <i class="fa fa-home"></i> Home
+                    </a>
+                </div>
+                <div id="songMenu">
+                    <a class="text-dark" href="#" onclick="goToSongsMenu()">
+                        <i class="fas fa-music"></i> Songs
+                    </a>
+                </div>
+                <div id="artistMenu">
+                    <a class="text-dark" href="#" onclick="goToArtistMenu()">
+                        <i class="fas fa-users"></i> Artists
+                    </a>
+                </div>
+                <div id="albumMenu">
+                    <a class="text-dark" href="#" onclick="goToAlbumMenu()">
+                        <i class="fas fa-compact-disc"></i> Albums
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--Content-->
+        <div class="col-10" id="content">
+            <h1>Welcome to the MusiQ Library</h1>
+            <h3>Where we (almost) have every song</h3>
+            <h6>If our developers weren't so lazy</h6>
+            <div class="row"></div>
+            <div class="row" style="margin-top: 25px">
+                <div class="col-5">
+                    <form class="form" id="insertForm">
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label"><b>Song</b></label>
+                            <div class="col-8">
+                                <input class="form-control" id="title" placeholder="Title" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label"><b>Artist</b></label>
+                            <div class="col-8" id="artistField">
+                                <button class="btn btn-success" type="button" id="actArtist"
+                                        onclick="addArtistFields()">Add Artist
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label" for="type"><b>Artist Type</b></label>
+                            <div class="col-8" id="type"></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label"><b>Album</b></label>
+                            <div class="col-8" id="albumField">
+                                <button class="btn btn-success" type="button" id="actAlbum" onclick="addAlbumField()">
+                                    Add Album
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-5">
+                                <button class="btn btn-primary" data-dismiss="alert" onclick="postData()" type="button">
+                                    Add to Library
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-5">
+                    <table class="table table-light table-sm table-hover table-bordered"
+                           style="background-color: rgba(225, 225, 225, 0.8); margin-left: 15%;">
+                        <thead>
+                        <tr>
+                            <th>Songs you might like</th>
+                        </tr>
+                        </thead>
+                        <tbody id="songData">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="app-controller.js">
+</script>
+
+</body>
+
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Library Management</title>-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+<!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
+<!--<title>startpage</title>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div class="w3-container w3-half w3-margin-top">-->
+
+<!--<p>-->
+<!--<input id="bookId" class="w3-input" type="hidden" style="width:90%">-->
+<!--</p>-->
+
+<!--<p>-->
+<!--<input id="name" class="w3-input" type="text" style="width:90%" required>-->
+<!--<label>Title</label></p>-->
+<!--<p>-->
+<!--<input id="author" class="w3-input" type="text" style="width:90%" required>-->
+<!--<label>Author</label></p>-->
+<!--<p>-->
+<!--<input id="isbn" class="w3-input" type="text" style="width:90%" required>-->
+<!--<label>ISBN</label></p>-->
+<!--<p>-->
+<!--<button id="btnSaveBook" onclick="saveBook()" class="w3-button w3-section w3-teal w3-ripple"> Add Book </button></p>-->
+
+<!--</div>-->
+
+<!--<div id="bookData" class="w3-container">-->
+
+<!--</div>-->
+<!--<script src="./app-controller.js"></script>-->
+<!--</body>-->
+<!--</html>-->
